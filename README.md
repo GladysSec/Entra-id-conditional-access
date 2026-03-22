@@ -22,3 +22,5 @@ User → Entra ID → Conditional Access → Logs → Sentinel → Incident → 
 
 A policy was created to enforce MFA for a controlled user group accessing Office 365, while excluding a break-glass account to prevent administrative lockout.
 
+![Include/Exclude-users](screenshots/Include/Exclude-users.jpg)
+![Grant-controls](screenshots/Grant-control.jpg)
