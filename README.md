@@ -1,42 +1,24 @@
-# Microsoft Entra ID Conditional Access Lab
+## Overview
+This lab demonstrates how Conditional Access policies in Microsoft Entra ID can be used to enforce MFA and how authentication attacks can be detected using Microsoft Sentinel and Microsoft Defender XDR.
 
-**Objective:**  
-Configure, test, and validate Conditional Access policies in Microsoft Entra ID to enforce MFA and secure Office 365 resources.
+## Objectives
+- Enforce MFA using Conditional Access
+- Simulate authentication attacks
+- Analyze Entra ID sign-in logs
+- Detect MFA fatigue using KQL
+- Generate and investigate incidents
 
-## Scenario & Threat Model
-- Target: Test user account
-- Goal: Validate MFA enforcement and policy application
-- Threat: Unauthorized access / credential compromise43
-Threat Mapping: Conditional Access policies prevent unauthorized access and mitigate account compromise risks (aligns with MITRE ATT&CK T1078 – Valid Accounts).
+## Architecture
 
-## Tools & Resources
-- Microsoft Entra ID / Azure AD
-- Office 365 (Exchange Online, Teams)
-- Azure Portal (Conditional Access & Sign-in Logs)
+Describe flow:
+User → Entra ID → Conditional Access → Logs → Sentinel → Incident → Defender XDR
 
-Step-by-Step Execution
+## Lab Setup
+- Test users
+- Security group
+- Break-glass account (excluded)
 
-1. Policy Setup
-- Log in to the Microsoft Entra ID portal￼ with your assigned credentials.
-- Navigate to Security > Conditional Access > New Policy.
-- Name the policy:
-Office365-MFA-Lab-Policy
-- Assign target users: select the test user and the test group you created.
-- Assign target apps: select Office 365.
-- Configure access controls: Require MFA
-- Enable the policy and save
+## Conditional Access Policy
 
-![Targeted-user](screenshots/Targeted-user.jpg)
-![MFA-enforcement](screenshots/MFA-enforcement.jpg)
-
-## Validate Policy with Successful Login
-	1.	Log in with the test user credentials.
-	2.	Complete MFA as prompted.
-
-  ![Success-login](screenshots/Success-login.jpg)
-
-  
-
-
-
+A policy was created to enforce MFA for a controlled user group accessing Office 365, while excluding a break-glass account to prevent administrative lockout.
 
