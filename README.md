@@ -26,6 +26,7 @@ Office365-MFA-Lab-Policy
 - Configure access controls: Require MFA
 - Enable the policy and save
 
+![Targeted-user](screenshots/kql-Targeted-user.jpg)
 
 
 
