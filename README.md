@@ -26,7 +26,17 @@ Office365-MFA-Lab-Policy
 - Configure access controls: Require MFA
 - Enable the policy and save
 
-![Targeted-user](screenshots/kql-Targeted-user.jpg)
+![Targeted-user](screenshots/Targeted-user.jpg)
+![MFA-enforcement](screenshots/MFA-enforcement.jpg)
+
+## Validate Policy with Successful Login
+	1.	Log in with the test user credentials.
+	2.	Complete MFA as prompted.
+
+  ![Success-login](screenshots/Success-login.jpg)
+
+  
+
 
 
 
