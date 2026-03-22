@@ -85,5 +85,61 @@ This scenario simulates a combination of:
 This query identifies users with multiple failed logins followed by MFA interruptions within a 5-minute window.
 
 ```kql
-<let TimeWindow = 30m; let FailedThreshold = 2; let MFAInterruptThreshold = 1; let FailedLogins = SigninLogs | where TimeGenerated > ago(TimeWindow) | where Status.errorCode == "50126" | summarize FailedCount = count(), FailedIPs = make_set(IPAddress) by UserPrincipalName, bin(TimeGenerated, 5m); let MFAInterruptions = SigninLogs | where TimeGenerated > ago(TimeWindow) | where Status.errorCode == "500121" | summarize InterruptedCount = count(), InterruptedIPs = make_set(IPAddress) by UserPrincipalName, bin(TimeGenerated, 5m); FailedLogins | join kind=inner MFAInterruptions on UserPrincipalName, TimeGenerated | where FailedCount >= FailedThreshold and InterruptedCount >= MFAInterruptThreshold | extend TotalAttempts = FailedCount + InterruptedCount | project TimeGenerated, UserPrincipalName, FailedCount, InterruptedCount, TotalAttempts>
+let TimeWindow = 30m; let FailedThreshold = 2; let MFAInterruptThreshold = 1; let FailedLogins = SigninLogs | where TimeGenerated > ago(TimeWindow) | where Status.errorCode == "50126" | summarize FailedCount = count(), FailedIPs = make_set(IPAddress) by UserPrincipalName, bin(TimeGenerated, 5m); let MFAInterruptions = SigninLogs | where TimeGenerated > ago(TimeWindow) | where Status.errorCode == "500121" | summarize InterruptedCount = count(), InterruptedIPs = make_set(IPAddress) by UserPrincipalName, bin(TimeGenerated, 5m); FailedLogins | join kind=inner MFAInterruptions on UserPrincipalName, TimeGenerated | where FailedCount >= FailedThreshold and InterruptedCount >= MFAInterruptThreshold | extend TotalAttempts = FailedCount + InterruptedCount | project TimeGenerated, UserPrincipalName, FailedCount, InterruptedCount, TotalAttempts>
           TotalAttempts
+```
+
+Frequency: 15 minutes
+- Lookup period: 30 minutes
+- Grouping: by UserPrincipalName
+- Incident creation: Enabled
+
+This detection identifies early-stage identity attacks that bypass simple MFA enforcement by exploiting user behavior. It improves visibility into authentication abuse patterns that are often missed in isolated log analysis.
+
+## Incident Investigation
+
+An incident was generated in Microsoft Sentinel based on the detection rule for suspicious authentication patterns.
+
+- Incident Name: Identity Attack Pattern: Credential Guessing + MFA Fatigue  
+- Severity: Medium  
+- Time Created: 2026-03-23 14:15 UTC  
+- Status: Active  
+
+Entities Identified
+- UserPrincipalName: testuser1@[domain]  
+- IP Addresses: 192.168.1.10, 192.168.1.15  
+- Location: Trusted country (Netherlands)  
+
+Alert Evidence
+- Failed Logins: 2 attempts (Error 50126 – invalid username or password)  
+- MFA Interruptions: 1 attempt (Error 500121 – MFA not satisfied)  
+- Correlation Window: Events occurred within 5 minutes  
+
+## MITRE ATT&CK Mapping
+- T1110 – Brute Force
+- T1621 – Multi-factor Authentication Fatigue
+
+## Key Security Insights
+
+Identity Protection
+- Conditional Access enforces security controls after primary authentication  
+- Failed logins (50126) occur before policy evaluation
+
+MFA Limitations
+- MFA alone is not sufficient to stop MFA fatigue attacks  
+- Users can be targeted with repeated push notifications  
+
+Detection Importance
+- Correlating failed logins with MFA interruptions improves visibility  
+- Single-event analysis is insufficient for identifying complex attack patterns  
+
+Operational Recommendations
+- Always maintain a break-glass account for emergency access  
+- Monitor and review policy exclusions regularly  
+- Combine Conditional Access with SIEM detections for holistic identity protection  
+
+Real-World Application
+  - Organizations should implement:
+  - Conditional Access policies for MFA enforcement  
+  - Correlation-based detection rules in Microsoft Sentinel  
+  - Unified monitoring with Defender XDR for incident verification
