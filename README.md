@@ -88,8 +88,6 @@ This scenario simulates a combination of:
 	-	≥2 failed attempts
 	-	≥1 MFA interruption
 
-// Detection: Credential Guessing + MFA Fatigue Pattern
-
 ### Detection Query (Credential Guessing + MFA Fatigue)
 
 This query identifies users with multiple failed logins followed by MFA interruptions within a 5-minute window.
