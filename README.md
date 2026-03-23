@@ -24,6 +24,8 @@ A policy was created to enforce MFA for a controlled user group accessing Office
 
 ![Include:Exclude-Users](screenshots/Include:Exclude-Users.jpg)
 ![Grant-controls](screenshots/Grant-controls.jpg)
+![Targeted-user](screenshots/Targeted-user.jpg)
+![Policy-setup](screenshots/Policy-setup.jpg)
 
 ## Attack Simulation
 
