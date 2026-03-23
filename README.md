@@ -69,6 +69,7 @@ Key Observations
 ![Sign-in-logs-filtered](screenshots/Sign-in-logs-filtered.jpg)
 ![Failed-login-details](screenshots/Failed-login-details.jpg)
 ![Sentinel-xdr-incident-generated](screenshots/Sentinel-xdr-incident-generated.jpg)
+![sentinel-analytics-rule](screenshots/sentinel-analytics-rule.jpg)
 
 ## Detection Engineering
 
