@@ -45,7 +45,7 @@ Scenario 3: Legitimate Access
 -	MFA approved
 -	Result: successful login
 
-![Successful-login](screenshots/Successful-login.jpg)
+![Succes-login](screenshots/Success-login.jpg)
 
 ## Log Analysis
 
