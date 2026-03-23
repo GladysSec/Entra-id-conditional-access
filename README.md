@@ -66,6 +66,10 @@ Key Observations
 - Failed logins (50126) show “Not applied”
 - MFA events (500121) show policy enforcement
 
+![Sign-in-logs-filtered](screenshots/Sign-in-logs-filtered.jpg)
+![Failed-login-details](screenshots/Failed-login-details.jpg)
+![Sentinel-xdr-incident-generated](screenshots/Sentinel-xdr-incident-generated.jpg)
+
 ## Detection Engineering
 
 A detection rule was created in Microsoft Sentinel to identify patterns of credential guessing followed by MFA interruption within a short time window.
