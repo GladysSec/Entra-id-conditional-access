@@ -32,14 +32,20 @@ Scenario 1: Credential Guessing
 - Multiple failed logins
 - Result: authentication failure
 
+![Failed-login](screenshots/Failed-login.jpg)
+
 Scenario 2: MFA Fatigue Simulation
 
 - Correct password + MFA not approved
 -	Result: interrupted login
 
+![Interupted- MFA](screenshots/Interupted-MFA.jpg)
+
 Scenario 3: Legitimate Access
 -	MFA approved
 -	Result: successful login
+
+![Successful-login](screenshots/Successful-login.jpg)
 
 ## Log Analysis
 
