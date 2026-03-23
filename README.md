@@ -110,11 +110,11 @@ An incident was generated in Microsoft Sentinel based on the detection rule for 
 
 - Incident Name: Identity Attack Pattern: Credential Guessing + MFA Fatigue  
 - Severity: Medium  
-- Time Created: 2026-03-23 14:15 UTC  
+- Time Created: 2026-03-22 22:15 UTC  
 - Status: Active  
 
 Entities Identified
-- UserPrincipalName: testuser1@[domain]  
+- UserPrincipalName: xxx@omnimicrosoft.com
 - IP Addresses: 192.168.1.10, 192.168.1.15  
 - Location: Trusted country (Netherlands)  
 
